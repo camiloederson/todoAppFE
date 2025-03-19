@@ -1,0 +1,13 @@
+<div class="container mt-4">
+    <!-- 🏠 Barra de navegación -->
+    <nav class="navbar navbar-light bg-light p-3">
+      <a class="navbar-brand fw-bold">Dashboard</a>
+      <a class="btn btn-primary" routerLink="/addTask">+ Nueva Tarea</a>
+    </nav>
+  
+    <router-outlet>
+      <app-task-stats [refresh]="refreshTrigger"></app-task-stats>
+        <app-task-list [refresh]="refreshTrigger"></app-task-list>
+    </router-outlet>
+  </div>
+  

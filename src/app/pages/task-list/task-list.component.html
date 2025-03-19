@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Lista de Tareas</h2>
+  
+    <div class="row">
+      <div *ngFor="let task of tasks" class="col-md-6 col-lg-4">
+        <div class="card task-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ task.title }}</h5>
+            <p class="card-text">{{ task.description || 'Sin descripción' }}</p>
+            <p class="text-muted"><strong>Fecha límite:</strong> {{ task.dueDate }}</p>
+            <span class="badge" [ngClass]="{
+              'bg-success': task.status === 'COMPLETED',
+              'bg-warning': task.status === 'PENDING',
+              'bg-danger': task.status === 'IN_PROGRESS'
+            }">
+              {{ task.status }}
+            </span>
+          </div>
+          <div class="card-footer text-end">
+            <button [routerLink]="['/editTask', task.id]" class="btn btn-sm btn-primary">Editar</button>
+            <button (click)="onDeleteTask(task.id)" class="btn btn-sm btn-danger">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

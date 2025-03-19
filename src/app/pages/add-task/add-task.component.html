@@ -1,0 +1,29 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="p-3 border rounded bg-light">
+    <div class="mb-3">
+      <label class="form-label">Título</label>
+      <input type="text" class="form-control" formControlName="title" />
+      <small *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="text-danger">
+        Título es obligatorio (máx 100 caracteres)
+      </small>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea class="form-control" formControlName="description"></textarea>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Fecha Límite</label>
+      <input type="date" class="form-control" formControlName="dueDate" />
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Estado</label>
+      <select class="form-select" formControlName="status">
+        <option *ngFor="let status of TaskStatus | keyvalue" [value]="status.value">{{ status.key }}</option>
+      </select>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Agregar Tarea</button>
+  </form>
+  

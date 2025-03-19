@@ -1,0 +1,15 @@
+.task-card {
+    border-left: 5px solid #007bff;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 15px;
+  }
+  
+  .task-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  

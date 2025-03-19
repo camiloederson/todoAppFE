@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <h2 class="text-center">Editar Tarea</h2>
+    
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="mt-3">
+      <!-- Título -->
+      <div class="mb-3">
+        <label for="title" class="form-label fw-bold">Título</label>
+        <input type="text" id="title" class="form-control" formControlName="title" required>
+      </div>
+  
+      <!-- Descripción -->
+      <div class="mb-3">
+        <label for="description" class="form-label fw-bold">Descripción</label>
+        <textarea id="description" class="form-control" formControlName="description" rows="3" required></textarea>
+      </div>
+  
+      <!-- Fecha de vencimiento -->
+      <div class="mb-3">
+        <label for="dueDate" class="form-label fw-bold">Fecha de vencimiento</label>
+        <input type="date" id="dueDate" class="form-control" formControlName="dueDate" required>
+      </div>
+      
+      <div class="mb-3">
+        <label for="status" class="form-label">Estado</label>
+        <select id="status" class="form-select" formControlName="status">
+          <option *ngIf="!taskForm.get('status')?.value" value="" disabled selected>Seleccione un estado</option>
+          <option value="PENDING">Pendiente</option>
+          <option value="IN_PROGRESS">En Progreso</option>
+          <option value="COMPLETED">Completada</option>
+        </select>
+      </div>
+      
+  
+      <!-- Botones -->
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-success" [disabled]="taskForm.invalid">Guardar Cambios</button>
+        <a routerLink="/dashboard" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+  
