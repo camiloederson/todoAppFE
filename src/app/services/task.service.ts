@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Task } from '../models/task.model';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private url = 'http://localhost:8080/todoapp/tasks';
+  private url = `${environment.apiUrl}/todoapp/tasks`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -29,7 +30,7 @@ export class TaskService {
     });
   }
 
-  editTask(task: Task) : Observable<Task>{
+  editTask(task: Task): Observable<Task> {
     return this.httpClient.put<Task>(`${this.url}/${task.id}`, task);
   }
 
@@ -44,5 +45,4 @@ export class TaskService {
       })
     );
   }
-  
 }
